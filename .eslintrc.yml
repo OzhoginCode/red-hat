@@ -7,6 +7,6 @@ parserOptions:
   ecmaVersion: latest
   sourceType: module
 rules: {
-  no-console: 0
+  no-console: 0,
   import/extensions: 0
 }
