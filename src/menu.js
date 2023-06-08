@@ -8,5 +8,7 @@ const startMenu = () =>{
         {cancel: 'Выйти из игры'});
 
     console.log(`${name}, вы выбрали ${menuItems[index]}!`);
+    return index;
 }
-startMenu()
+
+export default startMenu
