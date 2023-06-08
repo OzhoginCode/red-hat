@@ -1,6 +1,6 @@
-import startMenu from '../src/menu.js'
+import startMenu from './menu.js';
 
 const game = () => {
-    startMenu()
-}
+  startMenu();
+};
 export default game;
