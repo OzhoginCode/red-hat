@@ -1,6 +1,6 @@
 # Красная шапочка
 ### Hexlers tests and linter status:
-[![Actions Status](https://https://github.com/Sergunkit/red-hat/actions/workflows/hexlers.yml/badge.svg)](https://github.com/Sergunkit/red-hat/actions)
+[![Actions Status](https:/github.com/Sergunkit/red-hat/actions/workflows/hexlers.yml/badge.svg)](https://github.com/Sergunkit/red-hat/actions)
 
 
 ## Описание
