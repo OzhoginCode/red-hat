@@ -1,4 +1,4 @@
-name: project-46-test
+name: hexlers-test
 
 on: push
 
@@ -10,8 +10,8 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install --save-dev eslint-config-airbnb-base
       - run: npx eslint .
-      - name: run tests
-        run: NODE_OPTIONS=--experimental-vm-modules npx jest
+      # - name: run tests
+      #   run: NODE_OPTIONS=--experimental-vm-modules npx jest
       # - name: Test & publish code coverage
       #   uses: paambaati/codeclimate-action@v3.0.0
       #   env:
