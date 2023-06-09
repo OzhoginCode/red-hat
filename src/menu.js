@@ -1,18 +1,29 @@
 import readlineSync from 'readline-sync';
+import cowsay from 'cowsay';
 
-const startMenu = () => {
-  const name = readlineSync.question(
-    'Добро пожаловать в игру "Сказочный замес"! Как тебя зовут, герой? ',
-  );
-  const menuItems = ['Новая игра', 'Таблица рекордов'];
+const startMenu = (menuItems) => {
   const index = readlineSync.keyInSelect(
     menuItems,
     'Выберите пункт меню:',
     { cancel: 'Выйти из игры' },
   );
-
-  console.log(`${name}, вы выбрали ${menuItems[index]}!`);
   return index;
 };
 
-export default startMenu;
+const getNameHero = () => readlineSync.question('Как тебя зовут герой?');
+
+const sayPhrase = (phrase, face) => {
+  console.log(cowsay.say({ text: phrase, f: face }));
+  readlineSync.keyInPause('Продолжить повествование...', { guide: false });
+  console.clear();
+  return undefined;
+};
+const askQuestion = (question, face) => {
+  console.log(cowsay.say({ text: question, f: face }));
+  const answer = readlineSync.keyInYNStrict('Что ответила Красная Шапочка');
+  console.clear();
+  return answer;
+};
+export {
+  startMenu, getNameHero, sayPhrase, askQuestion,
+};
