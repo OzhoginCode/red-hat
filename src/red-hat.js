@@ -5,6 +5,7 @@ import {
 const game = () => {
   const menuItems = ['Новая игра', 'Таблица рекордов'];
   const currentHero = {};
+  // eslint-disable-next-line
   let speaker = 'hiya';
 
   console.log('Добро пожаловать в игру "Сказочный замес"!');
