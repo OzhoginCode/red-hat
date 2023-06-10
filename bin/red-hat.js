@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import startGame from '../src/red-hat.js';
+import startGame from '../index.js';
 
 startGame();
