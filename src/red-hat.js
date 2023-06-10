@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 import cowsay from 'cowsay';
 
 // Здесь задается стили отоброжения аваторов cowsay
-const avatars = { speaker: 'hiya', mother: 'yasuna_02' };
+const avatars = { speaker: 'hiya', mother: 'yasuna_02', ombudsman: 'C3PO' };
 
 const getNameHero = () => readlineSync.question('Как тебя зовут герой?');
 
@@ -40,6 +40,25 @@ function greeting() {
   hero.count = 7;
   return hero;
 }
+function choosePath() {
+  sayPhrase(`Красная Шапочка пошла к лесу и встретила по дороге детского омбудсмена,
+который был очень недоволен, что маленькая девочка идет в лес одна и без взрослых`, avatars.ombudsman);
+  sayPhrase(`Он спросил у нее, куда она идет, и Красная Шапочка ответила,
+что идет к своей бабушке, чтобы принести ей корзинку с пирожками.`, avatars.ombudsman);
+  sayPhrase('Тогда он сказал, что в лесу очень опасно и впереди две дороги:', avatars.ombudsman);
+  sayPhrase(`короткая - идти немного меньше до бабушки, но на пути могут быть какие-то препятствия и сложные задания;
+длинная - путь длиннее, и тоже просят помочь с решением задач, но они вроде бы проще.`, avatars.ombudsman);
+  const typesWay = ['Длинная', 'Короткая'];
+  const answer = readlineSync.keyInSelect(
+    typesWay,
+    'Красная Шапочка задумалась, по какой дороге ей пойти дальше?:',
+    { cancel: 'Повторить предыдущее сообщение' },
+  );
+  if (answer === 0) return { way: 'Длинная дорога' };
+  if (answer === 1) return { way: 'Короткая дорога' };
+  return choosePath();
+}
+
 export {
-  greeting, sayPhrase, askQuestion,
+  sayPhrase, askQuestion, greeting, choosePath,
 };
