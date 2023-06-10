@@ -1,40 +1,45 @@
-import {
-  startMenu, getNameHero, sayPhrase, askQuestion,
-} from './menu.js';
+import readlineSync from 'readline-sync';
+import cowsay from 'cowsay';
 
-const game = () => {
-  const menuItems = ['Новая игра', 'Таблица рекордов'];
-  const currentHero = {};
+// Здесь задается стили отоброжения аваторов cowsay
+const avatars = { speaker: 'hiya', mother: 'yasuna_02' };
 
-  // Здесь задается стили отоброжения аваторов cowsay
-  const speaker = 'hiya';
-  const mother = 'yasuna_02';
+const getNameHero = () => readlineSync.question('Как тебя зовут герой?');
 
-  console.log('Добро пожаловать в игру "Сказочный замес"!');
-
-  switch (startMenu(menuItems)) {
-    case -1:
-      return console.log('Вы вышли из игры!');
-    case 0:
-      console.log(menuItems[0]);
-      currentHero.name = getNameHero();
-
-      sayPhrase('Итак, мы начинаем...', speaker);
-      sayPhrase('Жила-была девочка, которую все звали Красной Шапочкой.', speaker);
-      sayPhrase('Жила она с мамой, а на другой стороне леса жила ее бабушка.', speaker);
-      sayPhrase('Однажды бабушка заболела и позвонила своей внучке по WhatsApp...', speaker);
-      sayPhrase('И попросила принести ей пирожки, чтобы побыстрее поправиться.', speaker);
-      sayPhrase('Замесила мама тесто, напекла пирожков...', speaker);
-      if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', mother)) {
-        sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', speaker);
-        console.log('Game over!');
-        return null;
-      }
-      return null;
-    case 1:
-      return null;
-    default:
-      return 'Operator selection error!!!';
-  }
+const sayPhrase = (phrase, face) => {
+  console.log(cowsay.say({ text: phrase, f: face }));
+  readlineSync.keyInPause('Продолжить повествование...', { guide: false });
+  console.clear();
+  return undefined;
 };
-export default game;
+const askQuestion = (question, face) => {
+  console.log(cowsay.say({ text: question, f: face }));
+  const answer = readlineSync.keyInYNStrict('Что ответила Красная Шапочка');
+  console.clear();
+  return answer;
+};
+function greeting() {
+  const hero = {};
+  hero.name = getNameHero();
+
+  sayPhrase('Итак, мы начинаем...', avatars.speaker);
+  sayPhrase(`Жила-была девочка, которую все звали Красной Шапочкой.
+Жила она с мамой, а на другой стороне леса жила ее бабушка.`, avatars.speaker);
+  sayPhrase(`Однажды бабушка заболела и позвонила своей внучке по WhatsApp
+и попросила принести ей пирожки, чтобы побыстрее поправиться.`, avatars.speaker);
+  sayPhrase('Замесила мама тесто, напекла пирожков...', avatars.speaker);
+
+  if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', avatars.mother)) {
+    sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', avatars.speaker);
+    console.log('Game over!');
+    return null;
+  }
+  sayPhrase(`У Красной Шапочки теперь 7 пирожков.
+Нужно донести до бабушки как можно больше пирожков, 
+чтобы не проиграть в нашей игре!`, avatars.speaker);
+  hero.count = 7;
+  return hero;
+}
+export {
+  greeting, sayPhrase, askQuestion,
+};
