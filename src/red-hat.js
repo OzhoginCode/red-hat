@@ -5,7 +5,10 @@ import {
 const game = () => {
   const menuItems = ['Новая игра', 'Таблица рекордов'];
   const currentHero = {};
-  let speaker = 'hiya';
+
+  // Здесь задается стили отоброжения аваторов cowsay
+  const speaker = 'hiya';
+  const mother = 'yasuna_02';
 
   console.log('Добро пожаловать в игру "Сказочный замес"!');
 
@@ -22,7 +25,7 @@ const game = () => {
       sayPhrase('Однажды бабушка заболела и позвонила своей внучке по WhatsApp...', speaker);
       sayPhrase('И попросила принести ей пирожки, чтобы побыстрее поправиться.', speaker);
       sayPhrase('Замесила мама тесто, напекла пирожков...', speaker);
-      if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', 'yasuna_02')) {
+      if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', mother)) {
         sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', speaker);
         console.log('Game over!');
         return null;
