@@ -10,8 +10,11 @@ const startGame = () => {
     case -1:
       return console.log('Вы вышли из игры!');
     case 0:
+      console.clear();
       console.log('Вы начали новую игру');
       Object.assign(currentHero, game.greeting());
+      Object.assign(currentHero, game.choosePath());
+      console.log(currentHero);
       return null;
     case 1:
       return null;
