@@ -1,5 +1,6 @@
 import * as game from './src/red-hat.js';
 import startMenu from './src/menu.js';
+import getDataFromFile from './src/fs.js';
 
 const startGame = () => {
   const currentHero = {};
@@ -17,6 +18,7 @@ const startGame = () => {
       console.log(currentHero);
       return null;
     case 1:
+      console.log(getDataFromFile('./content/riddles.json'));
       return null;
     default:
       return 'Operator selection error!!!';
