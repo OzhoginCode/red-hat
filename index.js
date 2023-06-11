@@ -18,7 +18,7 @@ const startGame = () => {
       console.log(currentHero);
       return null;
     case 1:
-      console.log(getDataFromFile('./content/riddles.json'));
+      console.log(getDataFromFile('./content/top-list.json'));
       return null;
     default:
       return 'Operator selection error!!!';
