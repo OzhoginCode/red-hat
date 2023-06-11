@@ -32,7 +32,7 @@ function greeting() {
   if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', avatars.mother)) {
     sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', avatars.speaker);
     console.log('Game over!');
-    return null;
+    process.exit();
   }
   sayPhrase(`У Красной Шапочки теперь 7 пирожков.
 Нужно донести до бабушки как можно больше пирожков, 
