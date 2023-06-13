@@ -1,10 +1,11 @@
 import readlineSync from 'readline-sync';
 import cowsay from 'cowsay';
 
-// Здесь задается стили отоброжения аваторов cowsay
+// Здесь задаются стили отображения аватаров cowsay
 const avatars = { speaker: 'hiya', mother: 'yasuna_02', ombudsman: 'C3PO' };
+const { speaker, mother, ombudsman } = avatars;
 
-const getNameHero = () => readlineSync.question('Как тебя зовут герой?');
+const getHeroName = () => readlineSync.question('Как тебя зовут герой?');
 
 const sayPhrase = (phrase, face) => {
   console.log(cowsay.say({ text: phrase, f: face }));
@@ -12,45 +13,50 @@ const sayPhrase = (phrase, face) => {
   console.clear();
   return undefined;
 };
+
 const askQuestion = (question, face) => {
   console.log(cowsay.say({ text: question, f: face }));
   const answer = readlineSync.keyInYNStrict('Что ответила Красная Шапочка');
   console.clear();
   return answer;
 };
+
 function greeting() {
   const hero = {};
-  hero.name = getNameHero();
+  hero.name = getHeroName();
 
-  sayPhrase('Итак, мы начинаем...', avatars.speaker);
+  sayPhrase('Итак, мы начинаем...', speaker);
   sayPhrase(`Жила-была девочка, которую все звали Красной Шапочкой.
-Жила она с мамой, а на другой стороне леса жила ее бабушка.`, avatars.speaker);
+Жила она с мамой, а на другой стороне леса жила ее бабушка.`, speaker);
   sayPhrase(`Однажды бабушка заболела и позвонила своей внучке по WhatsApp
-и попросила принести ей пирожки, чтобы побыстрее поправиться.`, avatars.speaker);
-  sayPhrase('Замесила мама тесто, напекла пирожков...', avatars.speaker);
+и попросила принести ей пирожки, чтобы побыстрее поправиться.`, speaker);
+  sayPhrase('Замесила мама тесто, напекла пирожков...', speaker);
 
-  if (!askQuestion('Красная шапочка, отнеси, пожалуйста пирожки для бабушки', avatars.mother)) {
-    sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', avatars.speaker);
+  if (!askQuestion('Красная шапочка, отнеси, пожалуйста, пирожки для бабушки', mother)) {
+    sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', speaker);
     console.log('Game over!');
     process.exit();
   }
+
   sayPhrase(`У Красной Шапочки теперь 7 пирожков.
 Нужно донести до бабушки как можно больше пирожков, 
-чтобы не проиграть в нашей игре!`, avatars.speaker);
+чтобы не проиграть в нашей игре!`, speaker);
   hero.count = 7;
   return hero;
 }
+
 function choosePath() {
   sayPhrase(`Красная Шапочка пошла к лесу и встретила по дороге детского омбудсмена,
-который был очень недоволен, что маленькая девочка идет в лес одна и без взрослых`, avatars.ombudsman);
+который был очень недоволен, что маленькая девочка идет в лес одна и без взрослых`, ombudsman);
   sayPhrase(`Он спросил у нее, куда она идет, и Красная Шапочка ответила,
-что идет к своей бабушке, чтобы принести ей корзинку с пирожками.`, avatars.ombudsman);
-  sayPhrase('Тогда он сказал, что в лесу очень опасно и впереди две дороги:', avatars.ombudsman);
-  sayPhrase(`короткая - идти немного меньше до бабушки, но на пути могут быть какие-то препятствия и сложные задания;
-длинная - путь длиннее, и тоже просят помочь с решением задач, но они вроде бы проще.`, avatars.ombudsman);
-  const typesWay = ['Длинная', 'Короткая'];
+что идет к своей бабушке, чтобы принести ей корзинку с пирожками.`, ombudsman);
+  sayPhrase('Тогда он сказал, что в лесу очень опасно и впереди две дороги:', ombudsman);
+  sayPhrase(`короткая -  до бабушки идти немного меньше, но на пути могут быть какие-то препятствия и сложные задания;
+длинная - путь длиннее, и тоже просят помочь с решением задач, но они вроде бы проще.`, ombudsman);
+
+  const wayTypes = ['Длинная', 'Короткая'];
   const answer = readlineSync.keyInSelect(
-    typesWay,
+    wayTypes,
     'Красная Шапочка задумалась, по какой дороге ей пойти дальше?:',
     { cancel: 'Повторить предыдущее сообщение' },
   );
