@@ -6,4 +6,5 @@ function getDataFromFile(filepath) {
   const rawdata = fs.readFileSync(correctPath);
   return JSON.parse(rawdata);
 }
+
 export default getDataFromFile;
