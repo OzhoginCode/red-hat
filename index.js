@@ -1,8 +1,8 @@
 import * as game from './src/red-hat.js';
 import startMenu from './src/menu.js';
 import getDataFromFile from './src/fs.js';
-import longWay from './src/longWay.js';
-// import shotWay from './src/shotWay';
+import goLongWay from './src/long-way.js';
+// import goShortWay from './src/short-way.js';
 
 const startGame = () => {
   const currentHero = {};
@@ -12,11 +12,14 @@ const startGame = () => {
   switch (startMenu()) {
     case -1:
       return console.log('Вы вышли из игры!');
+
     case 0:
       console.clear();
       console.log('Вы начали новую игру');
+
       Object.assign(currentHero, game.greeting());
       Object.assign(currentHero, game.choosePath());
+
       console.log(currentHero.way);
       if (currentHero.way === 'Длинная дорога') {
         const hero = longWay(currentHero);
@@ -27,13 +30,16 @@ const startGame = () => {
       // if (currentHero.way === 'Короткая дорога') { const hero = shotWay(currentHero); }
       // finishGame(); возвращает startGame
       break;
-      // return null;
+
     case 1:
       console.log(getDataFromFile('./content/top-list.json'));
       return null;
+
     default:
       return 'Operator selection error!!!';
   }
+
   return null;
 };
+
 export default startGame;
