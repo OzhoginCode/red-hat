@@ -22,7 +22,7 @@ const startGame = () => {
 
       console.log(currentHero.way);
       if (currentHero.way === 'Длинная дорога') {
-        const hero = longWay(currentHero);
+        const hero = goLongWay(currentHero);
         if (hero.exit) {
           return startGame();
         }
