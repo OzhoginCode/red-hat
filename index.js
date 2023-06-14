@@ -18,9 +18,14 @@ const startGame = () => {
       Object.assign(currentHero, game.greeting());
       Object.assign(currentHero, game.choosePath());
       console.log(currentHero.way);
-      if (currentHero.way === 'Длинная дорога') { longWay(currentHero); }
-      // if (currentHero.way === 'Короткая дорога') { shotWay(currentHero); }
-      console.log(currentHero);
+      if (currentHero.way === 'Длинная дорога') {
+        const hero = longWay(currentHero);
+        if (hero.exit) {
+          return startGame();
+        }
+      }
+      // if (currentHero.way === 'Короткая дорога') { const hero = shotWay(currentHero); }
+      // finishGame(); возвращает startGame
       break;
       // return null;
     case 1:
@@ -29,5 +34,6 @@ const startGame = () => {
     default:
       return 'Operator selection error!!!';
   }
+  return null;
 };
 export default startGame;
