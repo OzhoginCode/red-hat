@@ -19,8 +19,16 @@ const startGame = () => {
 
       Object.assign(currentHero, game.greeting());
       Object.assign(currentHero, game.choosePath());
-      if (currentHero.way === 'Длинная дорога') goLongWay(currentHero);
-      // if (currentHero.way === 'Короткая дорога') goShortWay(currentHero);
+
+      console.log(currentHero.way);
+      if (currentHero.way === 'Длинная дорога') {
+        const hero = longWay(currentHero);
+        if (hero.exit) {
+          return startGame();
+        }
+      }
+      // if (currentHero.way === 'Короткая дорога') { const hero = shotWay(currentHero); }
+      // finishGame(); возвращает startGame
       break;
 
     case 1:
