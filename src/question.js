@@ -3,9 +3,11 @@ import getDataFromFile from './fs.js';
 import * as game from './red-hat.js';
 
 export default (currentHero, taskNum) => {
-  const avatars = { speaker: 'hiya', mother: 'yasuna_02', ombudsman: 'C3PO' };
+  const ombudsman = 'C3PO';
+
   const tasks = getDataFromFile('./content/riddles.json');
-  game.sayPhrase(tasks[taskNum - 1].riddle, avatars.ombudsman);
+  game.sayPhrase(tasks[taskNum - 1].riddle, ombudsman);
+
   const answer = readlineSync.keyInSelect(
     tasks[taskNum - 1].answers,
     'Выберите правильный ответ:',
@@ -18,7 +20,7 @@ export default (currentHero, taskNum) => {
     console.log('ПРАВИЛЬНЫЙ ОТВЕТ!');
     return hero;
   }
-  console.log('Не верный ответ.');
+  console.log('Неверный ответ.');
   const lostPies = complexity >= 5 ? 2 : 1;
   const { count } = currentHero;
   hero = { ...currentHero, count: count - lostPies, win: false };
