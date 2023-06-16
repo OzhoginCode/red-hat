@@ -3,6 +3,7 @@ import startMenu from './src/menu.js';
 import getDataFromFile from './src/fs.js';
 import goLongWay from './src/long-way.js';
 import goShortWay from './src/short-way.js';
+import finishGame from './src/final.js';
 
 const startGame = () => {
   const currentHero = {};
@@ -33,7 +34,7 @@ const startGame = () => {
           return startGame();
         }
       }
-      // finishGame(); возвращает startGame
+      finishGame(currentHero);
       break;
 
     case 1:
@@ -44,7 +45,7 @@ const startGame = () => {
       return 'Operator selection error!!!';
   }
 
-  return null;
+  return startGame();
 };
 
 export default startGame;
