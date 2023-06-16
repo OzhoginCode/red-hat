@@ -2,7 +2,8 @@ import * as game from './src/red-hat.js';
 import startMenu from './src/menu.js';
 import getDataFromFile from './src/fs.js';
 import goLongWay from './src/long-way.js';
-// import goShortWay from './src/short-way.js';
+import goShortWay from './src/short-way.js';
+import finishGame from './src/final.js';
 
 const startGame = () => {
   const currentHero = {};
@@ -27,8 +28,13 @@ const startGame = () => {
           return startGame();
         }
       }
-      // if (currentHero.way === 'Короткая дорога') { const hero = shotWay(currentHero); }
-      // finishGame(); возвращает startGame
+      if (currentHero.way === 'Короткая дорога') {
+        const hero = goShortWay(currentHero);
+        if (hero.exit) {
+          return startGame();
+        }
+      }
+      finishGame(currentHero);
       break;
 
     case 1:
@@ -39,7 +45,7 @@ const startGame = () => {
       return 'Operator selection error!!!';
   }
 
-  return null;
+  return startGame();
 };
 
 export default startGame;
