@@ -1,6 +1,7 @@
-import { writeToFile } from './fs';
+import { writeToFile } from './fs.js';
 
 export default (hero) => {
-  const path = '../content/top-list2.js';
-  writeToFile(path, hero);
+  const path = './content/';
+  const data = JSON.stringify(hero, null, 2);
+  writeToFile(path, data);
 };

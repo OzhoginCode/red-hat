@@ -41,13 +41,12 @@ export default (currentHero) => {
     }
     game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker);
     game.sayPhrase(fin, speaker);
-    console.log(hero.count); // УБРАТЬ ЧУТЬ ПОЗЖЕ, ДЕБАГ
   }
   switch (hero.count) {
     case 7:
       game.sayPhrase(sevenPiys, speaker);
       break;
-    case 6:
+    case 6: // ДОБАВИТЬ ТЕКСТ НА ВСЕ CASE
     case 5:
     case 4:
     case 3:
@@ -56,11 +55,13 @@ export default (currentHero) => {
     default:
       game.sayPhrase(twoPiys, speaker);
   }
+
   hero.finishTime = new Date();
   hero.totalTimeInSeconds = (hero.finishTime - hero.startTime) / 1000;
-  record(hero); // должна записывать результат героя в таблицу
+  record(hero);
+
   game.sayPhrase(theEnd, speaker);
-  game.sayPhrase(`${hero.totalTime}`, speaker);
-  // console.clear();
+
+  console.clear();
   return NaN;
 };

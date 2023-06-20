@@ -7,8 +7,12 @@ function getDataFromFile(filepath) {
   return JSON.parse(rawdata);
 }
 
-function writeToFile(pathToFile, data) {
-  fs.appendFileSync(pathToFile, data);
+function writeToFile(directory, data) {
+  const filename = 'top-list2.json';
+
+  if (!fs.existsSync(directory)) fs.mkdirSync(directory);
+
+  fs.appendFileSync(directory + filename, data);
 }
 
 export default getDataFromFile;
