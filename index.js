@@ -21,7 +21,6 @@ const startGame = () => {
       Object.assign(currentHero, game.greeting());
       Object.assign(currentHero, game.choosePath());
 
-      console.log(currentHero.way);
       if (currentHero.way === 'Длинная дорога') {
         const hero = goLongWay(currentHero);
         if (hero.exit) {
@@ -34,6 +33,7 @@ const startGame = () => {
           return startGame();
         }
       }
+
       finishGame(currentHero);
       break;
 

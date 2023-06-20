@@ -1,9 +1,6 @@
 import readlineSync from 'readline-sync';
 import cowsay from 'cowsay';
-
-// Здесь задаются стили отображения аватаров cowsay
-const avatars = { speaker: 'hiya', mother: 'yasuna_02', ombudsman: 'C3PO' };
-const { speaker, mother, ombudsman } = avatars;
+import { speaker, mother, ombudsman } from './avatars.js';
 
 const getHeroName = () => readlineSync.question('Как тебя зовут герой?');
 
