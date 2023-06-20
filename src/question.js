@@ -5,6 +5,7 @@ import { ombudsman } from './avatars.js';
 
 export default (currentHero, taskNum) => {
   const tasks = getDataFromFile('./content/riddles.json');
+  console.clear();
   game.sayPhrase(tasks[taskNum - 1].riddle, ombudsman);
 
   const answer = readlineSync.keyInSelect(
@@ -18,11 +19,13 @@ export default (currentHero, taskNum) => {
 
   let hero = { ...currentHero, score: score + complexity, win: true };
   if (tasks[taskNum - 1].correctAnswer === answer) {
+    console.clear();
     console.log('ПРАВИЛЬНЫЙ ОТВЕТ!');
     return hero;
   }
 
-  console.log('Неверный ответ.');
+  console.clear();
+  console.log('Неверно:(');
   const lostPies = complexity >= 5 ? 2 : 1;
   const { count } = currentHero;
   hero = { ...currentHero, count: count - lostPies, win: false };
