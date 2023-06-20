@@ -12,24 +12,35 @@ const startGame = () => {
 
   switch (startMenu()) {
     case -1:
+      console.clear();
       return console.log('Вы вышли из игры!');
 
     case 0:
       console.clear();
       console.log('Вы начали новую игру');
 
+      currentHero.startTime = new Date();
+      console.log(currentHero.startTime);
+
       Object.assign(currentHero, game.greeting());
+      if (currentHero.exit) {
+        return startGame();
+      }
+
       Object.assign(currentHero, game.choosePath());
+      if (currentHero.exit) {
+        return startGame();
+      }
 
       if (currentHero.way === 'Длинная дорога') {
-        const hero = goLongWay(currentHero);
-        if (hero.exit) {
+        Object.assign(currentHero, goLongWay(currentHero));
+        if (currentHero.exit) {
           return startGame();
         }
       }
       if (currentHero.way === 'Короткая дорога') {
-        const hero = goShortWay(currentHero);
-        if (hero.exit) {
+        Object.assign(currentHero, goShortWay(currentHero));
+        if (currentHero.exit) {
           return startGame();
         }
       }
@@ -39,7 +50,7 @@ const startGame = () => {
 
     case 1:
       console.log(getDataFromFile('./content/top-list.json'));
-      return null;
+      return startGame();
 
     default:
       return 'Operator selection error!!!';

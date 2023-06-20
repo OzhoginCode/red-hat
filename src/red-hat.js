@@ -2,9 +2,10 @@ import readlineSync from 'readline-sync';
 import cowsay from 'cowsay';
 import { speaker, mother, ombudsman } from './avatars.js';
 
-const getHeroName = () => readlineSync.question('Как тебя зовут герой?');
+const getHeroName = () => readlineSync.question('Как тебя зовут герой? ');
 
 const sayPhrase = (phrase, face) => {
+  console.clear();
   console.log(cowsay.say({ text: phrase, f: face }));
   readlineSync.keyInPause('Продолжить повествование...', { guide: false });
   console.clear();
@@ -31,8 +32,8 @@ function greeting() {
 
   if (!askQuestion('Красная шапочка, отнеси, пожалуйста, пирожки для бабушки', mother)) {
     sayPhrase('Красная Шапочка решила остаться дома и смотреть ролики в Tik-Tok.', speaker);
-    console.log('Game over!');
-    process.exit();
+    hero.exit = true;
+    return hero;
   }
 
   sayPhrase(`У Красной Шапочки теперь 7 пирожков.
