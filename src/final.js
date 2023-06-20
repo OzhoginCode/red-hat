@@ -1,4 +1,4 @@
-// import record from './fs-record.js';
+import record from './fs-record.js';
 import question from './question.js';
 import * as game from './red-hat.js';
 import { speaker } from './avatars.js';
@@ -58,7 +58,7 @@ export default (currentHero) => {
   }
   hero.finishTime = new Date();
   hero.totalTimeInSeconds = (hero.finishTime - hero.startTime) / 1000;
-  //   record(hero); // должна записывать результат героя в таблицу
+  record(hero); // должна записывать результат героя в таблицу
   game.sayPhrase(theEnd, speaker);
   game.sayPhrase(`${hero.totalTime}`, speaker);
   // console.clear();

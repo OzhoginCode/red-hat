@@ -7,4 +7,9 @@ function getDataFromFile(filepath) {
   return JSON.parse(rawdata);
 }
 
+function writeToFile(pathToFile, data) {
+  fs.appendFileSync(pathToFile, data);
+}
+
 export default getDataFromFile;
+export { writeToFile };

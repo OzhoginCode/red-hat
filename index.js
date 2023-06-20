@@ -50,7 +50,7 @@ const startGame = () => {
 
     case 1:
       console.log(getDataFromFile('./content/top-list.json'));
-      return null;
+      return startGame();
 
     default:
       return 'Operator selection error!!!';
