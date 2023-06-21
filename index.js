@@ -1,12 +1,13 @@
 import * as game from './src/red-hat.js';
 import startMenu from './src/menu.js';
-import getDataFromFile from './src/fs.js';
+import { getDataFromFile } from './src/fs.js';
 import goLongWay from './src/long-way.js';
 import goShortWay from './src/short-way.js';
 import finishGame from './src/final.js';
 
 const startGame = () => {
   const currentHero = {};
+  const table = getDataFromFile('./content/top-list.json');
 
   console.log('Добро пожаловать в игру "Сказочный замес"!');
 
@@ -49,7 +50,7 @@ const startGame = () => {
       break;
 
     case 1:
-      console.log(getDataFromFile('./content/top-list.json'));
+      Object.entries(table).map(([name, result]) => console.log(`${name}................${result}`));
       return startGame();
 
     default:
