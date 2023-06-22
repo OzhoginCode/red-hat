@@ -1,25 +1,31 @@
 import readlineSync from 'readline-sync';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import chalk from 'chalk';
 import { getDataFromFile } from './fs.js';
-import * as game from './red-hat.js';
-import { ombudsman } from './avatars.js';
+// import * as game from './red-hat.js';
+// import { ombudsman } from './avatars.js';
 
-export default (currentHero, taskNum) => {
-  const tasks = getDataFromFile('./content/riddles.json');
+export default (currentHero) => {
+  const allTasks = getDataFromFile('./content/riddles.json');
+  const { way } = currentHero;
+  const wayTasks = (way === 'Длинная дорога')
+    ? allTasks.filter((el) => el.complexity <= 4)
+    : allTasks.filter((el) => el.complexity >= 4);
+  const task = wayTasks[Math.floor(Math.random() * wayTasks.length)];
   console.clear();
-  game.sayPhrase(tasks[taskNum - 1].riddle, ombudsman);
+  console.log(chalk.bgGreen(task.riddle));
 
   const answer = readlineSync.keyInSelect(
-    tasks[taskNum - 1].answers,
+    task.answers,
     'Выберите правильный ответ:',
     { cancel: 'Выйти из игры' },
   ) + 1;
 
   const { score } = currentHero;
-  const { complexity } = tasks[taskNum - 1];
-  console.log(complexity);
+  const { complexity } = task;
 
   let hero = { ...currentHero, score: score + complexity, win: true };
-  if (tasks[taskNum - 1].correctAnswer === answer) {
+  if (task.correctAnswer === answer) {
     console.clear();
     console.log('ПРАВИЛЬНЫЙ ОТВЕТ!');
     return hero;
