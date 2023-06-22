@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import getDataFromFile from './fs.js';
+import { getDataFromFile } from './fs.js';
 import * as game from './red-hat.js';
 import { ombudsman } from './avatars.js';
 
@@ -16,6 +16,7 @@ export default (currentHero, taskNum) => {
 
   const { score } = currentHero;
   const { complexity } = tasks[taskNum - 1];
+  console.log(complexity);
 
   let hero = { ...currentHero, score: score + complexity, win: true };
   if (tasks[taskNum - 1].correctAnswer === answer) {

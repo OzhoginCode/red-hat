@@ -22,6 +22,7 @@ const askQuestion = (question, face) => {
 function greeting() {
   const hero = {};
   hero.name = getHeroName();
+  hero.score = 0;
 
   sayPhrase('Итак, мы начинаем...', speaker);
   sayPhrase(`Жила-была девочка, которую все звали Красной Шапочкой.
