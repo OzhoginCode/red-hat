@@ -52,7 +52,8 @@ const startGame = () => {
       break;
 
     case 1:
-      Object.entries(table).map(([name, result]) => console.log(`${name}................${result}`));
+      console.clear();
+      Object.entries(table).map(([name, result]) => console.log(`${name}\t\t\t${result}`));
       return startGame();
 
     default:
