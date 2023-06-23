@@ -22,9 +22,6 @@ const startGame = () => {
       console.clear();
       console.log('Вы начали новую игру');
 
-      currentHero.startTime = new Date();
-      console.log(currentHero.startTime);
-
       Object.assign(currentHero, game.greeting());
       if (currentHero.exit) {
         return startGame();
@@ -35,18 +32,16 @@ const startGame = () => {
         return startGame();
       }
 
-      if (currentHero.way === 'Длинная дорога') {
-        Object.assign(currentHero, goLongWay(currentHero));
-        if (currentHero.exit) {
-          return startGame();
-        }
+      switch (currentHero.way) {
+        case 'Длинная дорога':
+          Object.assign(currentHero, goLongWay(currentHero));
+          break;
+        case 'Короткая дорога':
+          Object.assign(currentHero, goShortWay(currentHero));
+          break;
       }
-      if (currentHero.way === 'Короткая дорога') {
-        Object.assign(currentHero, goShortWay(currentHero));
-        if (currentHero.exit) {
-          return startGame();
-        }
-      }
+
+      if (currentHero.exit) return startGame();
 
       finishGame(currentHero);
       break;
@@ -55,9 +50,6 @@ const startGame = () => {
       console.clear();
       Object.entries(table).map(([name, result]) => console.log(`${name}\t\t\t${result}`));
       return startGame();
-
-    default:
-      return 'Operator selection error!!!';
   }
 
   return startGame();

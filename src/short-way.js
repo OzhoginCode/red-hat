@@ -33,7 +33,7 @@ export default (currentHero) => {
       hero.exit = true;
       return hero;
     }
-    game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker); // отняли пирожки уже в question
+    game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker);
   }
 
   game.sayPhrase(meetBearSpeech, speaker);
