@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import chalk from 'chalk';
 import * as game from './src/red-hat.js';
 import startMenu from './src/menu.js';
 import { getDataFromFile } from './src/fs.js';
@@ -9,7 +11,7 @@ const startGame = () => {
   const currentHero = {};
   const table = getDataFromFile('./content/top-list.json');
 
-  console.log('Добро пожаловать в игру "Сказочный замес"!');
+  console.log(chalk.blue.bgRed.bold('Добро пожаловать в игру "Сказочный замес"!'));
 
   switch (startMenu()) {
     case -1:

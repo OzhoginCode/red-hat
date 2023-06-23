@@ -10,7 +10,7 @@ export default (hero) => {
   const {
     name, score, count, totalTimeInSeconds,
   } = hero;
-  const newResult = count * 2 + score - totalTimeInSeconds;
+  const newResult = count * 2 + score - totalTimeInSeconds / 2;
   if (name in Object.keys(table)) {
     if (newResult < table[name]) return NaN;
   }
