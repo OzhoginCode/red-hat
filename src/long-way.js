@@ -1,3 +1,4 @@
+import { getDataFromFile } from './fs.js';
 import question from './question.js';
 import * as game from './red-hat.js';
 import { speaker } from './avatars.js';
@@ -33,8 +34,11 @@ const meetEnth = 'С помощью GPS они наконец добрались
 + ' пока не отгадаешь мою загадку!"\n';
 
 export default (currentHero) => {
+  const allTasks = getDataFromFile('./content/riddles.json');
+  const wayTasks = allTasks.filter((el) => el.complexity <= 2)
+    .sort(() => Math.random() - 0.5);
   game.sayPhrase(foxSpeak, speaker);
-  let hero = question(currentHero, 1);
+  let hero = question(currentHero, wayTasks[1]);
   if (!hero.win) {
     if (!game.askQuestion('Отдать один пирожок, чтобы пройти дальше', speaker)) {
       game.sayPhrase('Братец Лис стал кричать на Красную Шапочку, она испугалась и побежала домой.', speaker);
@@ -46,7 +50,7 @@ export default (currentHero) => {
   }
 
   game.sayPhrase(smallGirlSpeak, speaker);
-  hero = question(hero, 2);
+  hero = question(hero, wayTasks[2]);
   if (!hero.win) {
     if (!game.askQuestion('Отдать один пирожок, чтобы пройти дальше', speaker)) {
       game.sayPhrase('Красная Шапочка так и не смогла понять, где находится дом девочки, а в итоге заблудилась и сама.', speaker);
@@ -58,7 +62,7 @@ export default (currentHero) => {
   }
 
   game.sayPhrase(meetEnth, speaker);
-  hero = question(hero, 3);
+  hero = question(hero, wayTasks[3]);
   if (!hero.win) {
     if (!game.askQuestion('Загадка была очень сложная, поэтому Энт попросил\n'
     + '1 пирожок, чтобы пропустить девочку дальше. Отдать пирожок?', speaker)) {
