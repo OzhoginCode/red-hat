@@ -1,3 +1,4 @@
+import { getDataFromFile } from './fs.js';
 import record from './fs-record.js';
 import question from './question.js';
 import * as game from './red-hat.js';
@@ -30,8 +31,9 @@ const theEnd = 'КОНЕЦ!\n\n'
 + 'Ты можешь найти свой результат в таблице рекордов';
 
 export default (currentHero) => {
+  const allTasks = getDataFromFile('./content/riddles.json');
   game.sayPhrase(meetWolf, speaker);
-  const hero = question(currentHero, 6);
+  const hero = question(currentHero, allTasks[1]);
   if (!hero.win) {
     if (!game.askQuestion(wrongAnswer, speaker)) {
       game.sayPhrase('Красная Шапочка ответила не верно и не отдала пирожки, а ГБР так и не успело приехать...', speaker);
@@ -61,7 +63,7 @@ export default (currentHero) => {
   record(hero);
 
   game.sayPhrase(theEnd, speaker);
-
+  console.log(hero);
   console.clear();
   return NaN;
 };

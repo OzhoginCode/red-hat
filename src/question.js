@@ -1,30 +1,21 @@
 import readlineSync from 'readline-sync';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import chalk from 'chalk';
-import { getDataFromFile } from './fs.js';
-// import * as game from './red-hat.js';
-// import { ombudsman } from './avatars.js';
 
-export default (currentHero) => {
-  const allTasks = getDataFromFile('./content/riddles.json');
-  const { way } = currentHero;
-  const wayTasks = (way === 'Длинная дорога')
-    ? allTasks.filter((el) => el.complexity <= 4)
-    : allTasks.filter((el) => el.complexity >= 4);
-  const task = wayTasks[Math.floor(Math.random() * wayTasks.length)];
+export default (currentHero, task) => {
   console.clear();
   console.log(chalk.bgGreen(task.riddle));
 
   const answer = readlineSync.keyInSelect(
     task.answers,
     'Выберите правильный ответ:',
-    { cancel: 'Выйти из игры' },
+    { cancel: 'Правильного ответа нет' },
   ) + 1;
 
-  const { score } = currentHero;
+  let { score } = currentHero;
   const { complexity } = task;
+  score += complexity;
 
-  let hero = { ...currentHero, score: score + complexity, win: true };
+  let hero = { ...currentHero, score, win: true };
   if (task.correctAnswer === answer) {
     console.clear();
     console.log('ПРАВИЛЬНЫЙ ОТВЕТ!');

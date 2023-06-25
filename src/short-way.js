@@ -1,3 +1,4 @@
+import { getDataFromFile } from './fs.js';
 import question from './question.js';
 import * as game from './red-hat.js';
 import { speaker } from './avatars.js';
@@ -24,8 +25,10 @@ const leaveBearSpeech = 'Медведь был очень благодарен �
 + 'что она с радостью и сделала';
 
 export default (currentHero) => {
+  const allTasks = getDataFromFile('./content/riddles.json');
+  const wayTasks = allTasks.filter((el) => el.complexity > 2 && el.complexity < 10);
   game.sayPhrase(meetSheepSpeech, speaker);
-  let hero = question(currentHero, 4);
+  let hero = question(currentHero, wayTasks[1]);
   if (!hero.win) {
     if (!game.askQuestion('Отдать один пирожок, чтобы пройти дальше?', speaker)) {
       game.sayPhrase('Братец Лис стал кричать на Красную Шапочку, она испугалась и побежала домой.', speaker);
@@ -37,7 +40,7 @@ export default (currentHero) => {
   }
 
   game.sayPhrase(meetBearSpeech, speaker);
-  hero = question(hero, 5);
+  hero = question(hero, wayTasks[2]);
   if (!hero.win) {
     if (!game.askQuestion('Отдать один пирожок, чтобы пройти дальше?', speaker)) {
       game.sayPhrase('Красная Шапочка так и не смогла понять где находится дом девочки, а в итоге заблудилась и сама.', speaker);
