@@ -1,6 +1,7 @@
 # Красная шапочка
 ### Hexlers tests and linter status:
 ![Test Status](https://github.com/OzhoginCode/red-hat/actions/workflows/hexlers.yml/badge.svg?event=push)
+<a href="https://codeclimate.com/github/OzhoginCode/red-hat/maintainability"><img src="https://api.codeclimate.com/v1/badges/8ee37942bf6203877200/maintainability" /></a>
 
 
 

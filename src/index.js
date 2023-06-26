@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import chalk from 'chalk';
-import * as game from './src/red-hat.js';
-import startMenu from './src/menu.js';
-import { getDataFromFile } from './src/fs.js';
-import goLongWay from './src/long-way.js';
-import goShortWay from './src/short-way.js';
-import finishGame from './src/final.js';
+import * as game from './red-hat.js';
+import startMenu from './menu.js';
+import { getDataFromFile } from './fs.js';
+import goLongWay from './long-way.js';
+import goShortWay from './short-way.js';
+import finishGame from './final.js';
 
 const startGame = () => {
   const currentHero = {};
