@@ -108,3 +108,6 @@
 
 Выполнить команду:
 `make play`
+
+### Демонстрация игры
+[![asciicast](https://asciinema.org/a/LN5P1nwB4AL2S9UxBxHMDLfbO.svg)](https://asciinema.org/a/LN5P1nwB4AL2S9UxBxHMDLfbO)
