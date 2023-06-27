@@ -36,8 +36,8 @@ export default (currentHero) => {
       hero.exit = true;
       return hero;
     }
-    game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker);
-  }
+    game.sayPhrase(`Пирожков в корзинке - ${hero.count} штук`, speaker);
+  } else game.sayPhrase('Отлично, это правильный ответ!', speaker);
 
   game.sayPhrase(meetBearSpeech, speaker);
   hero = question(hero, wayTasks[2]);
@@ -48,8 +48,8 @@ export default (currentHero) => {
       hero.exit = true;
       return hero;
     }
-    game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker);
-  }
+    game.sayPhrase(`Пирожков в корзинке - ${hero.count} штук`, speaker);
+  } else game.sayPhrase('Отлично, это правильный ответ!', speaker);
 
   game.sayPhrase(leaveBearSpeech, speaker);
   return hero;

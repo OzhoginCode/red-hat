@@ -19,5 +19,5 @@ export default () => {
     console.log(`${paddedName}\t\t${paddedResult}`);
   });
 
-  readlineSync.keyIn('\nНажмите любую клавишу, чтобы выйти в главное меню...');
+  readlineSync.keyIn('\n\nНажми любую клавишу, чтобы выйти в главное меню...');
 };
