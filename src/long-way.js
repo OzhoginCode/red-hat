@@ -31,7 +31,7 @@ const meetEnth = 'С помощью GPS они наконец добрались
 + '"Я знаю, кто ты! - воскликнула девочка - Ты Энт, я видела\n'
 + 'таких как ты в фильме Властелин Колец"\n'
 + '"Ты права, я Энт - страж леса! И ты не пройдешь дальше,\n'
-+ ' пока не отгадаешь мою загадку!"\n';
++ ' пока не отгадаешь мою загадку!"';
 
 export default (currentHero) => {
   const allTasks = getDataFromFile('./content/riddles.json');
@@ -46,7 +46,7 @@ export default (currentHero) => {
       hero.exit = true;
       return hero;
     }
-    game.sayPhrase(`'Пирожков в корзинке - ${hero.count} штук'`, speaker);
+    game.sayPhrase(`Пирожков в корзинке - ${hero.count} штук`, speaker);
   }
 
   game.sayPhrase(smallGirlSpeak, speaker);

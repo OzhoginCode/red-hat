@@ -48,9 +48,15 @@ export default (currentHero) => {
     case 7:
       game.sayPhrase(sevenPiys, speaker);
       break;
-    case 6: // ДОБАВИТЬ ТЕКСТ НА ВСЕ CASE
+    case 6:
+      game.sayPhrase(treePiys, speaker);
+      break;
     case 5:
+      game.sayPhrase(treePiys, speaker);
+      break;
     case 4:
+      game.sayPhrase(treePiys, speaker);
+      break;
     case 3:
       game.sayPhrase(treePiys, speaker);
       break;

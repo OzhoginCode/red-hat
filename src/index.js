@@ -2,15 +2,15 @@
 import chalk from 'chalk';
 import * as game from './red-hat.js';
 import startMenu from './menu.js';
-import { getDataFromFile } from './fs.js';
 import goLongWay from './long-way.js';
 import goShortWay from './short-way.js';
 import finishGame from './final.js';
+import showRecords from './show-records.js';
 
 const startGame = () => {
   const currentHero = {};
-  const table = getDataFromFile('./userdata/top-list.json');
 
+  console.clear();
   console.log(chalk.blue.bgRed.bold('Добро пожаловать в игру "Сказочный замес"!'));
 
   switch (startMenu()) {
@@ -47,9 +47,7 @@ const startGame = () => {
       break;
 
     case 1:
-      console.clear();
-      if (!table.length) console.log('Список рекордов пока пуст\n');
-      Object.entries(table).map(([name, result]) => console.log(`${name}\t\t\t${result}`));
+      showRecords();
       return startGame();
   }
 
