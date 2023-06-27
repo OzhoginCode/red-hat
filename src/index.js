@@ -9,7 +9,7 @@ import finishGame from './final.js';
 
 const startGame = () => {
   const currentHero = {};
-  const table = getDataFromFile('./content/top-list.json');
+  const table = getDataFromFile('./userdata/top-list.json');
 
   console.log(chalk.blue.bgRed.bold('Добро пожаловать в игру "Сказочный замес"!'));
 

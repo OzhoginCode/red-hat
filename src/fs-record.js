@@ -3,8 +3,8 @@ import path from 'node:path';
 import { writeToFile } from './fs.js';
 
 export default (hero) => {
-  const correctPath = path.resolve(process.cwd(), './content/top-list.json');
-  const pathN = './content/';
+  const correctPath = path.resolve(process.cwd(), './userdata/top-list.json');
+  const pathN = './userdata/';
   const table = JSON.parse(fs.readFileSync(correctPath));
   fs.truncateSync(correctPath);
   const {

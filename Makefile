@@ -1,5 +1,6 @@
 install:
 	npm ci
+	make build
 
 lint:
 	npx eslint .
@@ -12,3 +13,6 @@ play:
 
 test:
 	NODE_OPTIONS=--experimental-vm-modules npx jest
+
+build:
+	node ./src/create-top-list.js
