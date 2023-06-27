@@ -48,6 +48,7 @@ const startGame = () => {
 
     case 1:
       console.clear();
+      if (!table.length) console.log('Список рекордов пока пуст\n');
       Object.entries(table).map(([name, result]) => console.log(`${name}\t\t\t${result}`));
       return startGame();
   }

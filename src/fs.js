@@ -15,5 +15,4 @@ function writeToFile(directory, data) {
   fs.appendFileSync(directory + filename, data);
 }
 
-// export default getDataFromFile;
 export { writeToFile, getDataFromFile };
