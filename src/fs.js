@@ -9,10 +9,16 @@ function getDataFromFile(filepath) {
 
 function writeToFile(directory, data) {
   const filename = 'top-list.json';
+  const filePath = directory + filename;
 
   if (!fs.existsSync(directory)) fs.mkdirSync(directory);
 
-  fs.appendFileSync(directory + filename, data);
+  if (fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, data);
+    return;
+  }
+
+  fs.appendFileSync(filePath, data);
 }
 
 export { writeToFile, getDataFromFile };
