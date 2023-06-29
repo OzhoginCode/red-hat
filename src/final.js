@@ -42,8 +42,7 @@ export default (currentHero) => {
       return hero;
     }
     game.sayPhrase(`Пирожков в корзинке - ${hero.count} штук`, speaker);
-  }
-  game.sayPhrase(fin, speaker);
+  } else game.sayPhrase(fin, speaker);
 
   switch (hero.count) {
     case 7:
