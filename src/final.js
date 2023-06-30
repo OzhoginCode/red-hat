@@ -69,7 +69,6 @@ export default (currentHero) => {
   record(hero);
 
   game.sayPhrase(theEnd, speaker);
-  console.log(hero);
   console.clear();
   return NaN;
 };
